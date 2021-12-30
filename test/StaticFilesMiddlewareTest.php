@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace Fduarte42\StaticFilesTest;
 
-require_once __DIR__ . '/../src/ContentTypes.php';
-
 use Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
