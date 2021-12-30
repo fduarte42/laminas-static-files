@@ -7,8 +7,8 @@ namespace Fduarte42\StaticFiles;
 use InvalidArgumentException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Server\MiddlewareInterface;
-use Zend\Stratigility\MiddlewarePipe;
-use function Zend\Stratigility\path;
+use Laminas\Stratigility\MiddlewarePipe;
+use function Laminas\Stratigility\path;
 
 class StaticFilesMiddlewarePipeFactory
 {

@@ -11,10 +11,10 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Fduarte42\StaticFiles\StaticFilesMiddlewarePipeFactory;
-use Zend\Diactoros\Response;
-use Zend\Diactoros\ServerRequest;
-use Zend\Stratigility\Middleware\PathMiddlewareDecorator;
-use Zend\Stratigility\MiddlewarePipeInterface;
+use Laminas\Diactoros\Response;
+use Laminas\Diactoros\ServerRequest;
+use Laminas\Stratigility\Middleware\PathMiddlewareDecorator;
+use Laminas\Stratigility\MiddlewarePipeInterface;
 
 class StaticFilesMiddlewarePipeTest extends TestCase
 {
