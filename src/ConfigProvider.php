@@ -24,7 +24,7 @@ class ConfigProvider
     }
 
 
-    public function getMiddlewarePipeline()
+    public function getMiddlewarePipeline(): array
     {
         return [
             [
