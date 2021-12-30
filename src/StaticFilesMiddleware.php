@@ -15,18 +15,16 @@ use Laminas\Diactoros\Stream;
 
 class StaticFilesMiddleware implements MiddlewareInterface
 {
-    /** @var SplStack */
-    protected $fileSystemAssetDirectoriesStack;
+    protected SplStack $fileSystemAssetDirectoriesStack;
 
-    /** @var array */
-    protected $options;
+    protected array $options;
 
     /**
      * StaticFilesMiddleware constructor.
      * @param array|string $fileSystemAssetDirectories
      * @param array $options
      */
-    public function __construct($fileSystemAssetDirectories, array $options = [])
+    public function __construct(array|string $fileSystemAssetDirectories, array $options = [])
     {
         $fileSystemAssetDirectories = is_array($fileSystemAssetDirectories) ? $fileSystemAssetDirectories : [$fileSystemAssetDirectories];
 
@@ -57,14 +55,14 @@ class StaticFilesMiddleware implements MiddlewareInterface
     }
 
     /**
-     * @param ServerRequestInterface  $request
+     * @param ServerRequestInterface $request
      * @param RequestHandlerInterface $handler
      *
      * @return ResponseInterface
      * @throws Exception
      */
     public function process(
-        ServerRequestInterface $request,
+        ServerRequestInterface  $request,
         RequestHandlerInterface $handler
     ): ResponseInterface
     {
@@ -91,7 +89,7 @@ class StaticFilesMiddleware implements MiddlewareInterface
             }
 
             // Ensure someone isn't using dots to go backward past the asset root folder
-            if (!strpos($filePath, realpath($fileSystemAssetDirectory)) === 0) {
+            if (!str_starts_with($filePath, realpath($fileSystemAssetDirectory))) {
                 return $handler->handle($request);
             }
 
@@ -111,7 +109,7 @@ class StaticFilesMiddleware implements MiddlewareInterface
                     $lockfile = $this->options['publicCachePath'] . '/' . md5($uriSubPath) . '.lock';
                     $lock = fopen($lockfile, 'c');
 
-                    // try to aquire exclusive lock
+                    // try to acquire exclusive lock
                     if (flock($lock, LOCK_EX)) {
                         $writePath = $this->options['publicCachePath'] . $uriSubPath;
                         $writeDir = dirname($writePath);
@@ -120,7 +118,7 @@ class StaticFilesMiddleware implements MiddlewareInterface
                         }
 
                         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-                            // don't use symlinks on windows
+                            // don't use symlinks on Windows
                             copy($filePath, $writePath);
                         } else {
                             // check if rootPath is absolute
@@ -153,7 +151,7 @@ class StaticFilesMiddleware implements MiddlewareInterface
                         fclose($lock);
                         @unlink($lockfile);
                     } else {
-                        throw new Exception('could not aquire file lock in publicCachePath');
+                        throw new Exception('could not acquire file lock in publicCachePath');
                     }
                 }
             }

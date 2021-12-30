@@ -3,8 +3,13 @@
 namespace Fduarte42\StaticFiles;
 
 
+use JetBrains\PhpStorm\ArrayShape;
+use JetBrains\PhpStorm\Pure;
+
 class ConfigProvider
 {
+    #[ArrayShape(['dependencies' => "\string[][]", 'middleware_pipeline' => "array[]"])]
+    #[Pure]
     public function __invoke(): array
     {
         return [
@@ -14,6 +19,7 @@ class ConfigProvider
     }
 
 
+    #[ArrayShape(['factories' => "string[]"])]
     public function getDependencies(): array
     {
         return [

@@ -12,8 +12,7 @@ use Laminas\Stratigility\MiddlewarePipe;
 
 class StaticFilesMiddlewarePipe implements MiddlewareInterface
 {
-    /** @var MiddlewarePipe */
-    protected $pipeline;
+    protected MiddlewarePipe $pipeline;
 
     public function __construct(MiddlewarePipe $pipeline)
     {

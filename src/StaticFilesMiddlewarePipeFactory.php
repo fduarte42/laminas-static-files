@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Fduarte42\StaticFiles;
 
 use InvalidArgumentException;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Laminas\Stratigility\MiddlewarePipe;
 use function Laminas\Stratigility\path;
@@ -29,11 +31,13 @@ class StaticFilesMiddlewarePipeFactory
      * @param ContainerInterface $container
      *
      * @return MiddlewareInterface
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function __invoke(ContainerInterface $container): MiddlewareInterface
     {
         $config = $container->has('config') ? $container->get('config') : [];
-        $config = isset($config['serve_static']) ? $config['serve_static'] : [];
+        $config = $config['serve_static'] ?? [];
 
         $middlewarePipe = new MiddlewarePipe();
         foreach ($config as $uriPath => $options) {
