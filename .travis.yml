@@ -2,6 +2,6 @@ language: php
 dist: focal
 php:
   - '8.0'
-  - '8.1'
+  - '8.1.0'
 install: composer update
 script: phpunit --bootstrap vendor/autoload.php test
