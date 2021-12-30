@@ -9,4 +9,3 @@ $app->pipe('/fun-module/assets', new \Fduarte42\StaticFiles\StaticFilesMiddlewar
 ));
 ```
 
-This is a fork of Serve Static https://github.com/reliv/serve-static
