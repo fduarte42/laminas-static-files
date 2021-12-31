@@ -28,5 +28,8 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5"
+  },
+  "conflict": {
+    "fduarte42/zend-expressive-static-files": "*"
   }
 }
