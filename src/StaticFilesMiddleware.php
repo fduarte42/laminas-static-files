@@ -24,7 +24,7 @@ class StaticFilesMiddleware implements MiddlewareInterface
      * @param array|string $fileSystemAssetDirectories
      * @param array $options
      */
-    public function __construct(array|string $fileSystemAssetDirectories, array $options = [])
+    public function __construct($fileSystemAssetDirectories, array $options = [])
     {
         $fileSystemAssetDirectories = is_array($fileSystemAssetDirectories) ? $fileSystemAssetDirectories : [$fileSystemAssetDirectories];
 

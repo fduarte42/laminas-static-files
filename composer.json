@@ -30,6 +30,7 @@
     "phpunit/phpunit": "^9.5"
   },
   "replace": {
+    "symfony/polyfill-php80": "*",
     "fduarte42/zend-expressive-static-files": "*"
   }
 }
