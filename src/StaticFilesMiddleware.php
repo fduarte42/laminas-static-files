@@ -68,7 +68,7 @@ class StaticFilesMiddleware implements MiddlewareInterface
     {
         $uriSubPath = $request->getUri()->getPath();
 
-        if (in_array(pathinfo($uriSubPath)['extension'], $this->options['ignoredExtensions'])) {
+        if (in_array(pathinfo($uriSubPath)['extension'] ?? '', $this->options['ignoredExtensions'])) {
             return $handler->handle($request);
         }
 
