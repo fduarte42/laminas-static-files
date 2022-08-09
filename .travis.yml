@@ -3,6 +3,6 @@ dist: focal
 php:
   - '7.4'
   - '8.0'
-  - '8.1.0'
+  - '8.1'
 install: composer update
 script: phpunit --bootstrap vendor/autoload.php test
