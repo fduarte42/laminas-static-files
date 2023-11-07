@@ -48,10 +48,17 @@ class StaticFilesMiddlewarePipeFactory
             $fileSystemAssetDirectory = $options['fileSystemAssetDirectory'];
             unset($options['fileSystemAssetDirectory']);
 
-            $middlewarePipe->pipe(path($uriPath, new StaticFilesMiddleware(
-                $fileSystemAssetDirectory,
-                $options
-            )));
+            if ($uriPath === '/') {
+                $middlewarePipe->pipe(path($uriPath, new StaticFilesMiddleware(
+                    $fileSystemAssetDirectory,
+                    $options
+                )));
+            } else {
+                $middlewarePipe->pipe(new StaticFilesMiddleware(
+                    $fileSystemAssetDirectory,
+                    $options
+                ));
+            }
         }
 
         return new StaticFilesMiddlewarePipe( $middlewarePipe);

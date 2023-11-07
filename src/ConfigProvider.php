@@ -35,7 +35,7 @@ class ConfigProvider
         return [
             [
                 'middleware' => 'static-files-middleware-pipe',
-                'priority' => 1000,
+                'priority' => 900,
             ],
         ];
     }
