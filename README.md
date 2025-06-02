@@ -1,4 +1,4 @@
-# Laminas / Mezzio Static Files [![Build Status](https://api.travis-ci.com/fduarte42/laminas-static-files.svg?branch=master&status=passed)](https://app.travis-ci.com/github/fduarte42/laminas-static-files)
+# Laminas / Mezzio Static Files [![CI](https://github.com/fduarte42/laminas-static-files/actions/workflows/ci.yml/badge.svg)](https://github.com/fduarte42/laminas-static-files/actions/workflows/ci.yml)
 A PSR-15 middleware that serves static assets for you
 
 Example usage:
